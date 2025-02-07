@@ -9,7 +9,7 @@
      column-fill: balance;
     }
     .card__title {
-     background-color: grey;
+     background-color: linear-gradient(to bottom right, blue, pink);
      font-size: 5rem;
      text-align: center;
      margin: 3rem;
@@ -25,6 +25,7 @@
      aspect-ratio:16/9;
      object-fit: contain;
      display: block;
+     border-style: solid;
     }
     .card__more {
      display: flex;
