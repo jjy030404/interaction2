@@ -1,14 +1,39 @@
  <style>
 
-    /* Use these classes to style the .card component */
-
-    .card {}
-    .card__title {}
+    .card {
+     font-family:system-ui;
+     text-align: center;
+     padding: 2rem;
+     margin: 2rem;
+     border-radius: 2rem;
+    }
+    .card__title {
+     blackground-color: grey;
+     font-size: 2.5rem;
+     text-align: center;
+    }
     .card__excerpt {}
-    .card__image {}
-    .card__more {}
-    .card__more:hover {}
-    .card__more:active {}
+    .card__image {
+     aspect-ratio:16/9;
+     object-fit: contain;
+     display: grid;
+    }
+    .card__more {
+     display: block;
+     padding: 1rem;
+     gap: 1rem;
+     margin: 1.5rem 0;
+     transition: border-radius 0.15s linear;
+    }
+    .card__more:hover {
+     background-color: beige;
+     border-radius:: 3em;
+     
+    }
+    .card__more:active {
+     background-color: brown;
+    }
+ 
 
     @media screen and (min-width: 1024px) {
       .card {}
