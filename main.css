@@ -9,8 +9,9 @@
     }
     .card__title {
      blackground-color: grey;
-     font-size: 2.5rem;
+     font-size: 5rem;
      text-align: center;
+     margin: 3rem;
     }
     .card__excerpt {
      back-ground color: orange;
@@ -27,11 +28,11 @@
      font-size: 1.5rem;
      padding: 1rem;
      gap: 1rem;
-     transition: border-radius 0.15s linear;
+     transition: border-radius 0.2s linear;
     }
     .card__more:hover {
      background-color: beige;
-     border-radius:: 3em;
+     border-radius: 3em;
      
     }
     .card__more:active {
