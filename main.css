@@ -30,12 +30,14 @@
      object-fit: contain;
      display: block;
      border-style: solid;
+     margin: 5rem;
     }
     .card__more {
      display: flex;
      font-size: 1.5rem;
      padding: 1rem;
      gap: 1rem;
+     font-kerning: normal;
      transition: border-radius 0.2s linear;
     }
     .card__more:hover {
@@ -45,6 +47,7 @@
     }
     .card__more:active {
      background-color: brown;
+     font-size: 3rem;
     }
  
 
