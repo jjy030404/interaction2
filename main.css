@@ -6,15 +6,17 @@
      padding: 2rem;
      margin: 2rem;
      border-radius: 2rem;
+     column-fill: balance;
     }
     .card__title {
-     blackground-color: grey;
+     background-color: grey;
      font-size: 5rem;
      text-align: center;
      margin: 3rem;
+     column-fill: balance;
     }
     .card__excerpt {
-     back-ground color: orange;
+     background-color: orange;
      padding: 3rem;
      display: block;
     }
