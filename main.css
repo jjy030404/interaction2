@@ -21,7 +21,7 @@
      display: grid;
     }
     .card__more {
-     display: block;
+     display: flex;
      padding: 1rem;
      gap: 1rem;
      margin: 1.5rem 0;
