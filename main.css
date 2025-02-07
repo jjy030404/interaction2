@@ -14,17 +14,19 @@
     }
     .card__excerpt {
      back-ground color: orange;
+     padding: 3rem;
+     display: block;
     }
     .card__image {
      aspect-ratio:16/9;
      object-fit: contain;
-     display: grid;
+     display: block;
     }
     .card__more {
      display: flex;
+     font-size: 1.5rem;
      padding: 1rem;
      gap: 1rem;
-     margin: 1.5rem 0;
      transition: border-radius 0.15s linear;
     }
     .card__more:hover {
@@ -46,7 +48,9 @@
       }
       .card__excerpt {}
       .card__image {}
-      .card__more {}
+      .card__more {
+       background-color: white;
+      }
       .card__more:hover {}
       .card__more:active {}
     }
