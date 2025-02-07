@@ -15,6 +15,9 @@
      text-align: center;
      margin: 3rem;
      column-fill: balance;
+     column-rule-width: 15px;
+     column-rule-style: dotted;
+     column-rule-color: rebeccapurple;
     }
     .card__excerpt {
      background-color: orange;
