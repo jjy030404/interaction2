@@ -12,7 +12,9 @@
      font-size: 2.5rem;
      text-align: center;
     }
-    .card__excerpt {}
+    .card__excerpt {
+     back-ground color: orange;
+    }
     .card__image {
      aspect-ratio:16/9;
      object-fit: contain;
@@ -36,8 +38,12 @@
  
 
     @media screen and (min-width: 1024px) {
-      .card {}
-      .card__title {}
+      .card {
+       background-color: bisque;
+      }
+      .card__title {
+       font-size: 30px;
+      }
       .card__excerpt {}
       .card__image {}
       .card__more {}
