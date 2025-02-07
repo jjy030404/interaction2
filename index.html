@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Article card component</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="main.css">
+</head>
 <body>
-
-<h1>My First Heading</h1>
-
-<p>
-<a href= "example-demo-1.html">
-this is css link
-</a>
-</p>
-
-</body>
-</html>
+  <section class="cards">
+    <article class="card card--featured">
+      <h1 class="card__title">Zygnematales</h1>
+      <p class="card__excerpt">The chloroplasts from Spirogyra are twisted spirally around the cell. The genus Spirogyra has more than 200 species.</p>
+      <img class="card__image" src="https://upload.wikimedia.org/wikipedia/commons/8/85/The_freshwater_alga_Spirogyra.jpg">
+      <a class="card__more" href="#more">Read more</a>
+    </article>
+    <article class="card card--featured">
+      <h1 class="card__title">Ulvales</h1>
+      <p class="card__excerpt">Gutweed (Ulva intestinalis) at low tide in Brofjorden, Govik, Lysekil Municipality, Sweden. The tublar fronds are puffed up by oxygen from photosynthesis. This specimen is about 7 cm (2.8 in) high and it grows on a rusty boat ramp. In this region, the tidal range is about 20 cm (7.9 in).</p>
+      <img class="card__image" src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Gutweed_at_low_tide_in_Brofjorden_8.jpg">
+      <a class="card__more" href="#more">Read more</a>
+    </article>
+    <article class="card card--featured">
+      <h1 class="card__title">Desmidiales</h1>
+      <p class="card__excerpt">Desmidia microalga Micrasterias rotata. Light microscopy. Image by Anatoly Mikhaltsov from Wikimedia Commons.</p>
+      <img class="card__image" src="https://upload.wikimedia.org/wikipedia/commons/3/34/Micrasterias_rotata.jpg" alt="Green disc with a jagged edge against a grey background">
+      <a class="card__more" href="#more">Read more</a>
+    </article>
+  </section>
