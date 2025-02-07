@@ -51,8 +51,12 @@
       .card__title {
        font-size: 30px;
       }
-      .card__excerpt {}
-      .card__image {}
+      .card__excerpt {
+       background-color: #80ced6;
+      }
+      .card__image {
+       margin: 48px;
+      }
       .card__more {
        background-color: white;
       }
