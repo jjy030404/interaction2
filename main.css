@@ -1,60 +1,32 @@
-head{
-  font-size: 5 rem;
-  text-align: center;
-  font-family: "Lucida Console", "Courier New", monospace;
- margin: 20px;
-   line-height: 3.2;
-}
+ <style>
 
-body {
-  background-color: ivory;
-}
+    /* Use these classes to style the .card component */
 
-h1 {
-  color : black;
-  font-size: 20px;
-  font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
-  text-align: center;
-  margin: 25px;
-  line-height: 1.6;
-}
+    .card {}
+    .card__title {}
+    .card__excerpt {}
+    .card__image {}
+    .card__more {}
+    .card__more:hover {}
+    .card__more:active {}
 
-h2 {
-  background-color; black;
-  font-size: 2em;
-  height: 50px;
-  text-wrap: balance;
-  text-align: center;
-  margin: 50px;
-  font-family: "Times New Roman", Times, serif;
-}
+    @media screen and (min-width: 1024px) {
+      .card {}
+      .card__title {}
+      .card__excerpt {}
+      .card__image {}
+      .card__more {}
+      .card__more:hover {}
+      .card__more:active {}
+    }
 
-h3 {
-  p.ridge {border-style: ridge;}
-  font-size: 20px;
-  color: blue;
-  width: 50%;
-  text-align: center;
+    /* You can leave everything below as is — we'll explain flexbox in a later lecture! */
 
-}
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 8vw;
+    }
 
-strong{
-  font-size: 1.5rem;
-  letter-spacing: 3px; 
-}
-
-li{
-  width: 300px;
-  margin: auto;
-  border: 1px solid red;
-}
-
-ol{
-  background-color: red;
-  color: black;
-  border: 2px solid green;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
+  </style>
