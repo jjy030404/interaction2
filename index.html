@@ -1,70 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Adventure of Elements</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Responsive and Colorful Grid Layout</title>
 </head>
 <body>
-
-<div class="box">
-	<label for="night">The night was</label>
-	<select id="night" name="night">
-		<option value="dark">pitch black, not a star in sight.</option>
-		<option value="stormy">roaring with thunderous applause.</option>
-		<option value="gusty">whistling its own tunes.</option>
-	</select>
-</div>
-
-<div class="box">
-	<span>It all happened on </span><input type="date" name="storydate" /><span>...</span>
-</div>
-
-<div class="box">
-	<label for="odysseus1">Should Odysseus have enlisted an elephant for the battle?</label>
-	<input type="checkbox" id="odysseus1" name="odysseus1" checked />
-	
-	<label for="odysseus2">Could Odysseus have been sneakier?</label>
-	<input type="checkbox" id="odysseus2" name="odysseus2" />
-</div>
-
-<div class="box">
-	<p>What was the Cyclops' favorite snack?</p>
-	<div>
-		<input type="radio" id="sheep" name="cyclops" value="sheep" checked />
-		<label for="sheep">Lost Sheep</label>
-	</div>
-	<div>
-		<input type="radio" id="humans" name="cyclops" value="humans" />
-		<label for="humans">Unwary Travelers</label>
-	</div>
-	<div>
-		<input type="radio" id="jellyfish" name="cyclops" value="jellyfish" />
-		<label for="jellyfish">Misguided Jellyfish</label>
-	</div>
-</div>
-
-<div class="box">
-	<div>
-		<span>Encountered </span>
-		<input type="number" id="sirens" name="sirens" min="1" max="50" step="1" />
-		<span> mesmerizing sirens!</span>
-	</div>
-</div>
-
-<div class="box">
-	<div>
-		<span>The siren's song was </span>
-		<input type="range" id="volume" name="volume" min="0" max="11"  />
-		<span> out of this world!</span>
-	</div>
-</div>
-
-<div class="box">
-	<p>The mysterious sea color was:</p>
-	<input type="color" id="body" name="body" value="#0000ff" /> <!-- Changed to a deep sea blue -->
-</div>
-	
+    <div class="envelope">
+        <header>Some header</header>
+        <div class="sidecol">This is side column 1.</div>
+        <div class="maincol">This is the main column.</div>
+        <div class="sidecol2">This is side column 2.</div>
+        <footer>Some ending</footer>
+    </div>
 </body>
 </html>
+
