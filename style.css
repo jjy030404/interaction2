@@ -1,49 +1,58 @@
-body {
-	font-family: 'Arial', sans-serif;
-	background-color: #f0f0f0;
-	color: #333;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.box {
-	margin: 20px;
-	padding: 10px;
-	background-color: #fff;
-	border-radius: 8px;
-	box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+.envelope {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: auto;
+    grid-template-areas: "header header header" "side1 main side2" ". . footer";
+    gap: 10px;
+    padding: 10px;
 }
 
-label {
-	display: block;
-	margin-bottom: 5px;
-	font-weight: bold;
-	color: #5a5a5a;
+header, .sidecol, .maincol, .sidecol2, footer {
+    padding: 20px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-input[type="date"],
-select,
-input[type="checkbox"],
-input[type="radio"],
-input[type="number"],
-input[type="range"],
-input[type="color"] {
-	display: block;
-	margin-top: 5px;
-	margin-bottom: 15px;
-	padding: 8px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
+header {
+    grid-area: header;
+    background-color: #ff6347;
 }
 
-input[type="range"] {
-	width: 100%;
+.sidecol {
+    grid-area: side1;
+    background-color: #32cd32;
 }
 
-input[type="color"] {
-	width: 100%;
-	padding: 0;
+.maincol {
+    grid-area: main;
+    background-color: #6495ed;
+    min-height: 300px;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
-	margin-right: 5px;
+.sidecol2 {
+    grid-area: side2;
+    background-color: #ff69b4;
 }
+
+footer {
+    grid-area: footer;
+    background-color: #9370db;
+}
+
+@media screen and (max-width: 768px) {
+    .envelope {
+        grid-template-columns: 1fr;
+        grid-template-areas: "header" "main" "side1" "side2" "footer";
+    }
+    header, .sidecol, .maincol, .sidecol2, footer {
+        border-radius: 0;
+    }
+}
+
