@@ -3,58 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smooth Positioning Boxes - Final Demo</title>
+    <title>Demo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
 
-<div class="container">
+        <section class="intro-box">
+            Explore CSS positioning and smooth scrolling effects!
+        </section>
 
-    <section class="intro-box">
-        Scroll smoothly to explore CSS positioning and minimal effects!
-    </section>
+        additional content
 
-    <section class="content-box static-box">
-        <h2>Static Box</h2>
-        <p>This box follows the natural document flow.</p>
-        <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>
-        <p class="site-info">Free online encyclopedia.</p>
-    </section>
+        <section class="content-box static-box">
+            <h2>Static Box</h2>
+            <p>This box follows the normal document flow.</p>
+            <a href="https://www.wikipedia.org/" target="_blank">Visit Wikipedia</a>
+            <p class="site-description">A free encyclopedia anyone can edit.</p>
+        </section>
 
-    <section class="content-box relative-box">
-        <h2>Relative Box</h2>
-        <p>This box is positioned slightly offset from its original place.</p>
-        <a href="https://www.youtube.com/" target="_blank">YouTube</a>
-        <p class="site-info">Watch and share videos online.</p>
-    </section>
+        <section class="content-box relative-box">
+            <h2>Relative Box</h2>
+            <p>This box is offset slightly from its original place.</p>
+            <a href="https://www.youtube.com/" target="_blank">Visit YouTube</a>
+            <p class="site-description">Platform for watching and sharing videos.</p>
+        </section>
 
-    <section class="content-box absolute-container">
-        <div class="absolute-box">
-            <h2>Absolute Box</h2>
-            <p>This box is positioned relative to its container.</p>
-            <a href="https://github.com/" target="_blank">GitHub</a>
-            <p class="site-info">Host and collaborate on code.</p>
+        <section class="content-box absolute-container">
+            <div class="absolute-box">
+                <h2>Absolute Box</h2>
+                <p>This box is positioned relative to its parent.</p>
+                <a href="https://www.github.com/" target="_blank">Visit GitHub</a>
+                <p class="site-description">Platform for hosting and collaborating on code.</p>
+            </div>
+        </section>
+
+        <section class="content-box sticky-box">
+            <h2>Sticky Box</h2>
+            <p>This box sticks to the top when scrolling.</p>
+            <a href="https://www.reddit.com/" target="_blank">Visit Reddit</a>
+            <p class="site-description">A network of communities based on people's interests.</p>
+        </section>
+
+        <div class="spacer-box"></div>
+
+        <div class="fixed-box">
+            <h2>Fixed Box</h2>
+            <p>This box stays fixed on the viewport.</p>
+            <a href="https://www.google.com/" target="_blank">Visit Google</a>
+            <p class="site-description">World's most popular search engine.</p>
         </div>
-    </section>
 
-    <section class="content-box sticky-box">
-        <h2>Sticky Box</h2>
-        <p>This box sticks to the top during scrolling.</p>
-        <a href="https://www.reddit.com/" target="_blank">Reddit</a>
-        <p class="site-info">The front page of the internet.</p>
-    </section>
-
-    <div class="spacer-box"></div>
-
-    <div class="fixed-box">
-        <h2>Fixed Box</h2>
-        <p>This box stays fixed in the viewport.</p>
-        <a href="https://www.google.com/" target="_blank">Google</a>
-        <p class="site-info">World’s most popular search engine.</p>
     </div>
 
-</div>
+    <script>
+        document.addEventListener('scroll', () => {
+            const boxes = document.querySelectorAll('.content-box');
+            const triggerBottom = window.innerHeight / 1.2;
 
-<script src="script.js"></script>
+            boxes.forEach(box => {
+                const boxTop = box.getBoundingClientRect().top;
+
+                if (boxTop < triggerBottom) {
+                    box.classList.add('scrolled');
+                } else {
+                    box.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
