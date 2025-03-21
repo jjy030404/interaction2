@@ -1,58 +1,69 @@
+/* Reset and Global Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.envelope {
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-    grid-template-rows: auto;
-    grid-template-areas: "header header header" "side1 main side2" ". . footer";
-    gap: 10px;
-    padding: 10px;
+body {
+    font-family: "Courier New", monospace;
+    background-color: #f1f4f9;
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-header, .sidecol, .maincol, .sidecol2, footer {
-    padding: 20px;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    padding: 2em 0;
 }
 
-header {
-    grid-area: header;
-    background-color: #ff6347;
+/* Intro box */
+.intro-box {
+    background-color: #d9e8fc;
+    color: #333;
+    text-align: center;
+    padding: 1.5em;
+    border-radius: 12px;
+    margin-bottom: 3em;
+    font-size: 1.2em;
 }
 
-.sidecol {
-    grid-area: side1;
-    background-color: #32cd32;
+/* General Content Box Styles */
+.content-box {
+    padding: 1.5em;
+    margin-bottom: 3em;
+    border-radius: 12px;
+    color: #333;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
-.maincol {
-    grid-area: main;
-    background-color: #6495ed;
-    min-height: 300px;
+.content-box h2 {
+    margin-bottom: 0.5em;
 }
 
-.sidecol2 {
-    grid-area: side2;
-    background-color: #ff69b4;
+.content-box a {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 0.5em 1em;
+    background-color: #ffffff;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #444;
+    transition: background-color 0.3s ease;
 }
 
-footer {
-    grid-area: footer;
-    background-color: #9370db;
+.content-box a:hover {
+    background-color: #d0dff3;
 }
 
-@media screen and (max-width: 768px) {
-    .envelope {
-        grid-template-columns: 1fr;
-        grid-template-areas: "header" "main" "side1" "side2" "footer";
-    }
-    header, .sidecol, .maincol, .sidecol2, footer {
-        border-radius: 0;
-    }
+/* Specific Box Styles */
+.static-box {
+    background-color: #fde2e2;
 }
 
+.relative
