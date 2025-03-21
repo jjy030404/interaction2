@@ -3,38 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Positioning Box Demo</title>
     <link rel="stylesheet" href="style.css">
-    <title>Responsive and Colorful Grid Layout</title>
 </head>
 <body>
-    <div class="envelope">
-        <header>Stopping by Woods on a Snowy Eveningr</header>
-        <div class="sidecol">
-<pre>
-Whose woods these are I think I know.   
-His house is in the village though;   
-He will not see me stopping here   
-To watch his woods fill up with snow. </pre>  </div>
-        <div class="maincol"><pre>
-My little horse must think it queer   
-To stop without a farmhouse near   
-Between the woods and frozen lake   
-The darkest evening of the year.   
-        </pre></div>
-        <div class="sidecol2"><pre>
-He gives his harness bells a shake   
-To ask if there is some mistake.   
-The only other sound’s the sweep   
-Of easy wind and downy flake.   
-        </pre></div>
-        <footer><pre>
-The woods are lovely, dark and deep,   
-But I have promises to keep,   
-And miles to go before I sleep,   
-And miles to go before I sleep.
 
-        </pre></footer>
+    <div class="container">
+
+        <section class="intro-box">
+            Explore CSS positioning and smooth scroll effects below!
+        </section>
+
+        <section class="content-box static-box">
+            <h2>Static Position</h2>
+            <p>This box follows the normal document flow.</p>
+            <a href="https://www.wikipedia.org/" target="_blank">Visit Wikipedia</a>
+        </section>
+
+        <section class="content-box relative-box">
+            <h2>Relative Position</h2>
+            <p>This box is offset slightly from its original place.</p>
+            <a href="https://www.youtube.com/" target="_blank">Visit YouTube</a>
+        </section>
+
+        <section class="content-box absolute-container">
+            <div class="absolute-box">
+                <h2>Absolute Position</h2>
+                <p>This box is placed relative to its parent.</p>
+                <a href="https://www.github.com/" target="_blank">Visit GitHub</a>
+            </div>
+        </section>
+
+        <section class="content-box sticky-box">
+            <h2>Sticky Position</h2>
+            <p>This box sticks to the top when scrolling.</p>
+            <a href="https://www.reddit.com/" target="_blank">Visit Reddit</a>
+        </section>
+
+        <div class="spacer-box"></div>
+
+        <div class="fixed-box">
+            <h2>Fixed Position</h2>
+            <p>This box stays fixed on the viewport.</p>
+            <a href="https://www.google.com/" target="_blank">Visit Google</a>
+        </div>
+
     </div>
+
+    <script>
+        document.addEventListener('scroll', () => {
+            const boxes = document.querySelectorAll('.content-box');
+            const triggerBottom = window.innerHeight / 1.2;
+
+            boxes.forEach(box => {
+                const boxTop = box.getBoundingClientRect().top;
+
+                if (boxTop < triggerBottom) {
+                    box.classList.add('scrolled');
+                } else {
+                    box.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
-
