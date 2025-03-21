@@ -13,8 +13,6 @@
             Explore CSS positioning and smooth scrolling effects!
         </section>
 
-        additional content
-
         <section class="content-box static-box">
             <h2>Static Box</h2>
             <p>This box follows the normal document flow.</p>
@@ -71,6 +69,8 @@
                 }
             });
         });
+        
+        window.dispatchEvent(new Event('scroll'));
     </script>
 </body>
 </html>
