@@ -3,69 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smooth Positioning Box Demo</title>
+    <title>Demo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <section class="intro-box">
-            Explore CSS positioning and smooth scroll effects below!
-        </section>
+    <section class="intro-box">
+        Scroll Down
+    </section>
 
-        <section class="content-box static-box">
-            <h2>Static Position</h2>
-            <p>This box follows the normal document flow.</p>
-            <a href="https://www.wikipedia.org/" target="_blank">Visit Wikipedia</a>
-        </section>
+    <section class="content-box static-box">
+        <h2>Static Box</h2>
+        <p>Follows the natural document flow.</p>
+        <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>
+        <p class="site-info">Free online encyclopedia.</p>
+    </section>
 
-        <section class="content-box relative-box">
-            <h2>Relative Position</h2>
-            <p>This box is offset slightly from its original place.</p>
-            <a href="https://www.youtube.com/" target="_blank">Visit YouTube</a>
-        </section>
+    <section class="content-box relative-box">
+        <h2>Relative Box</h2>
+        <p>Positioned slightly offset from its original place.</p>
+        <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+        <p class="site-info">Watch and share videos online.</p>
+    </section>
 
-        <section class="content-box absolute-container">
-            <div class="absolute-box">
-                <h2>Absolute Position</h2>
-                <p>This box is placed relative to its parent.</p>
-                <a href="https://www.github.com/" target="_blank">Visit GitHub</a>
-            </div>
-        </section>
-
-        <section class="content-box sticky-box">
-            <h2>Sticky Position</h2>
-            <p>This box sticks to the top when scrolling.</p>
-            <a href="https://www.reddit.com/" target="_blank">Visit Reddit</a>
-        </section>
-
-        <div class="spacer-box"></div>
-
-        <div class="fixed-box">
-            <h2>Fixed Position</h2>
-            <p>This box stays fixed on the viewport.</p>
-            <a href="https://www.google.com/" target="_blank">Visit Google</a>
+    <section class="content-box absolute-container">
+        <div class="absolute-box">
+            <h2>Absolute Box</h2>
+            <p>Positioned relative to its container.</p>
+            <a href="https://github.com/" target="_blank">GitHub</a>
+            <p class="site-info">Host and collaborate on code.</p>
         </div>
+    </section>
 
+    <section class="content-box sticky-box">
+        <h2>Sticky Box</h2>
+        <p>Sticks to the top during scrolling.</p>
+        <a href="https://www.reddit.com/" target="_blank">Reddit</a>
+        <p class="site-info">The front page of the internet.</p>
+    </section>
+
+    <div class="spacer-box"></div>
+
+    <div class="fixed-box">
+        <h2>Fixed Box</h2>
+        <p>Fixed to the viewport corner.</p>
+        <a href="https://www.google.com/" target="_blank">Google</a>
+        <p class="site-info">World’s most popular search engine.</p>
     </div>
 
-    <script>
-        document.addEventListener('scroll', () => {
-            const boxes = document.querySelectorAll('.content-box');
-            const triggerBottom = window.innerHeight / 1.2;
+</div>
 
-            boxes.forEach(box => {
-                const boxTop = box.getBoundingClientRect().top;
-
-                if (boxTop < triggerBottom) {
-                    box.classList.add('scrolled');
-                } else {
-                    box.classList.remove('scrolled');
-                }
-            });
-        });
-    </script>
-
+<script src="script.js"></script>
 </body>
 </html>
