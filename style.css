@@ -1,157 +1,94 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-    font-family: 'Roboto', sans-serif;
-    background: #f7f7f7; 
+body {
+	background: #fdfdfd;
+	color: #222;
+	font-family: "Helvetica Neue", sans-serif;
+	padding-bottom: 100px;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    padding: 20px;
+.title {
+	text-align: center;
+	font-size: 2.5rem;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	color: #333;
 }
 
-.effect {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
-    border-radius: 10px;
-    transition: all 0.5s ease;
-    position: relative;
-    overflow: hidden;
-    color: #fff;
-    font-size: 1.5em;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
+.controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 20px;
+	padding: 30px;
 }
 
-.effect:hover {
-    transform: scale(1.1);
+.controls-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	flex-wrap: wrap;
 }
 
-.shadow-pulse {
-    animation: shadow-pulse 1.5s infinite;
+button {
+	background-color: #222;
+	color: #fff;
+	border: none;
+	padding: 12px 20px;
+	border-radius: 6px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: 0.3s ease;
 }
 
-@keyframes shadow-pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
-    }
-    100% {
-        box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0);
-    }
+button:hover {
+	background-color: #444;
 }
 
-.rotate-scale-down {
-    transition: transform 0.5s ease;
+#container {
+	transition: 0.4s ease;
+	padding: 30px;
+	max-width: 800px;
+	margin: 0 auto;
+	line-height: 1.6;
+	font-size: 1.1rem;
 }
 
-.rotate-scale-down:hover {
-    transform: rotate(10deg) scale(0.8);
+.clean {
+	font-family: "Inter", sans-serif;
+	color: #333;
+	font-size: 20px;
+	line-height: 1.6;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 12px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-.gradient-shift {
-    background: linear-gradient(45deg, #ff89e9, #ffd1b5);
-    animation: gradient-shift 3s ease infinite;
+.pretty {
+	font-family: "Playfair Display", serif;
+	color: #4e2a84;
+	background-color: #f2ecfa;
+	font-size: 22px;
+	padding: 30px;
+	border-radius: 16px;
+	line-height: 2;
+	letter-spacing: 0.02em;
+	box-shadow: 0 10px 30px rgba(78, 42, 132, 0.1);
 }
 
-@keyframes gradient-shift {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-}
-
-.bouncing-ball {
-    background: radial-gradient(circle, #4caf50, #087f23);
-    animation: bouncing-ball 0.5s ease infinite;
-}
-
-@keyframes bouncing-ball {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-.flip-card {
-    perspective: 1000px;
-}
-
-.flip-card-inner {
-    position:relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-}
-
-.flip-card-front {
-    background-color: #ff7f50;
-    color: black;
-}
-
-.flip-card-back {
-    background-color: #31c7ef;
-    color: white;
-    transform: rotateY(180deg);
-}
-
-.color-flip {
-    background: linear-gradient(to bottom, #8a2387, #e94057, #f27121);
-    animation: color-flip 5s linear infinite;
-}
-
-@keyframes color-flip {
-    0%, 100% {
-        filter: hue-rotate(0deg);
-    }
-    50% {
-        filter: hue-rotate(360deg);
-    }
-}
-
-.zoom-fade {
-    animation: zoom-fade 3s ease-in-out infinite;
-}
-
-@keyframes zoom-fade {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.5);
-        opacity: 0.5;
-    }
+.ugly {
+	font-family: "Comic Sans MS", cursive;
+	color: lime;
+	background-color: yellow;
+	letter-spacing: 0.3em;
+	text-shadow: 2px 2px 0 red;
+	transform: rotate(1.5deg);
+	font-size: 24px;
+	padding: 25px;
 }
