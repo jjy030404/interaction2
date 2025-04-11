@@ -1,95 +1,68 @@
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+let container = document.querySelector('#container')
+
+function resetAllStyles() {
+	container.removeAttribute('class')
+	container.removeAttribute('style')
 }
 
-body {
-	background: #fdfdfd;
-	color: #222;
-	font-family: "Helvetica Neue", sans-serif;
-	padding-bottom: 100px;
-}
+let buttonReset = document.querySelector('#reset')
+buttonReset.addEventListener('click', resetAllStyles)
 
-.title {
-	text-align: center;
-	font-size: 2.5rem;
-	margin-top: 40px;
-	margin-bottom: 10px;
-	color: #333;
-}
+let buttonClean = document.querySelector('#buttonClean')
+buttonClean.addEventListener('click', function() {
+	resetAllStyles()
+	container.classList.add('clean')
+})
 
-.controls {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	gap: 20px;
-	padding: 30px;
-}
+let buttonPoetic = document.querySelector('#buttonPoetic')
+buttonPoetic.addEventListener('click', function() {
+	resetAllStyles()
+	container.style.fontFamily = 'Georgia, serif'
+	container.style.letterSpacing = '-0.1em'
+	container.style.textAlign = 'center'
+	container.style.fontSize = '64px'
+	container.style.wordSpacing = '2em'
+	container.style.lineHeight = '3em'
+	container.style.background = '#f9f3ee'
+	container.style.padding = '50px'
+	container.style.borderRadius = '20px'
+})
 
-.controls-buttons {
-	display: flex;
-	justify-content: center;
-	gap: 10px;
-	flex-wrap: wrap;
-}
+let buttonPretty = document.querySelector('#buttonPretty')
+buttonPretty.addEventListener('click', function() {
+	resetAllStyles()
+	container.classList.add('pretty')
+})
 
-button {
-	background-color: #222;
-	color: #fff;
-	border: none;
-	padding: 12px 20px;
-	border-radius: 6px;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: 0.3s ease;
-}
+let buttonUgly = document.querySelector('#buttonUgly')
+buttonUgly.addEventListener('click', function() {
+	resetAllStyles()
+	container.classList.add('ugly')
+})
 
-button:hover {
-	background-color: #444;
-}
+let buttonScary = document.querySelector('#buttonScary')
+buttonScary.addEventListener('click', function() {
+	resetAllStyles()
+	container.style.fontFamily = "'Creepster', cursive"
+	container.style.color = 'red'
+	container.style.backgroundColor = '#000'
+	container.style.fontSize = '30px'
+	container.style.textTransform = 'uppercase'
+	container.style.letterSpacing = '0.4em'
+	container.style.textShadow = '0 0 12px white'
+	container.style.padding = '60px'
+	container.style.borderRadius = '12px'
+})
 
-#container {
-	transition: 0.4s ease;
-	padding: 30px;
-	max-width: 800px;
-	margin: 0 auto;
-	line-height: 1.6;
-	font-size: 1.1rem;
-}
-
-.clean {
-	font-family: "Inter", sans-serif;
-	color: #333;
-	font-size: 20px;
-	line-height: 1.6;
-	padding: 20px;
-	background-color: #fff;
-	border-radius: 12px;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-.pretty {
-	font-family: "Playfair Display", serif;
-	color: #4e2a84;
-	background-color: #f2ecfa;
-	font-size: 22px;
-	padding: 30px;
-	border-radius: 16px;
-	line-height: 2;
-	letter-spacing: 0.02em;
-	box-shadow: 0 10px 30px rgba(78, 42, 132, 0.1);
-}
-
-.ugly {
-	font-family: "Comic Sans MS", cursive;
-	color: lime;
-	background-color: yellow;
-	letter-spacing: 0.3em;
-	text-shadow: 2px 2px 0 red;
-	transform: rotate(1.5deg);
-	font-size: 24px;
-	padding: 25px;
-}
-
+let buttonFriendly = document.querySelector('#buttonFriendly')
+buttonFriendly.addEventListener('click', function() {
+	resetAllStyles()
+	container.style.fontFamily = "'Comic Sans MS', cursive"
+	container.style.color = '#1b5e20'
+	container.style.backgroundColor = '#e8f5e9'
+	container.style.fontSize = '22px'
+	container.style.padding = '30px'
+	container.style.borderRadius = '16px'
+	container.style.lineHeight = '2'
+	container.style.boxShadow = '0 0 20px rgba(0,0,0,0.1)'
+})
