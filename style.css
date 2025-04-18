@@ -1,94 +1,79 @@
 * {
-	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-	background: #fdfdfd;
-	color: #222;
-	font-family: "Helvetica Neue", sans-serif;
-	padding-bottom: 100px;
-}
-
-.title {
-	text-align: center;
-	font-size: 2.5rem;
-	margin-top: 40px;
-	margin-bottom: 10px;
-	color: #333;
-}
-
-.controls {
+	font-family: 'Manrope', sans-serif;
+	background: linear-gradient(145deg, #d3cce3, #e9e4f0);
 	display: flex;
+	justify-content: center;
 	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	gap: 20px;
-	padding: 30px;
+	height: 100vh;
 }
 
-.controls-buttons {
+.container {
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	padding: 40px 60px;
+	border-radius: 20px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	max-width: 600px;
+}
+
+h1 {
+	font-size: 28px;
+	color: #4a4a4a;
+	margin-bottom: 20px;
+	letter-spacing: 1px;
+}
+
+.fortune-text {
+	font-size: 24px;
+	color: #222;
+	min-height: 80px;
+	transition: all 0.4s ease-in-out;
+}
+
+.buttons {
+	margin-top: 30px;
 	display: flex;
 	justify-content: center;
-	gap: 10px;
-	flex-wrap: wrap;
+	gap: 20px;
 }
 
 button {
-	background-color: #222;
-	color: #fff;
-	border: none;
 	padding: 12px 20px;
-	border-radius: 6px;
-	font-size: 1rem;
+	font-size: 16px;
+	border: none;
+	border-radius: 30px;
+	background: linear-gradient(145deg, #6a11cb, #2575fc);
+	color: white;
 	cursor: pointer;
-	transition: 0.3s ease;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+	transition: all 0.3s ease;
 }
 
 button:hover {
-	background-color: #444;
+	transform: translateY(-3px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+	background: linear-gradient(145deg, #2575fc, #6a11cb);
 }
 
-#container {
-	transition: 0.4s ease;
-	padding: 30px;
-	max-width: 800px;
-	margin: 0 auto;
-	line-height: 1.6;
-	font-size: 1.1rem;
+.fade-in {
+	animation: fadeIn 0.5s ease-in-out;
 }
 
-.clean {
-	font-family: "Inter", sans-serif;
-	color: #333;
-	font-size: 20px;
-	line-height: 1.6;
-	padding: 20px;
-	background-color: #fff;
-	border-radius: 12px;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-.pretty {
-	font-family: "Playfair Display", serif;
-	color: #4e2a84;
-	background-color: #f2ecfa;
-	font-size: 22px;
-	padding: 30px;
-	border-radius: 16px;
-	line-height: 2;
-	letter-spacing: 0.02em;
-	box-shadow: 0 10px 30px rgba(78, 42, 132, 0.1);
-}
-
-.ugly {
-	font-family: "Comic Sans MS", cursive;
-	color: lime;
-	background-color: yellow;
-	letter-spacing: 0.3em;
-	text-shadow: 2px 2px 0 red;
-	transform: rotate(1.5deg);
-	font-size: 24px;
-	padding: 25px;
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
