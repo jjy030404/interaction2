@@ -1,68 +1,50 @@
-let container = document.querySelector('#container')
+let fortunes = [
+	"You will have a <span style='font-size: 40px; color: #5dade2;'>GLORIOUS</span> day.",
+	"You will consume much <span style='letter-spacing: 1em; color: #f39c12;'>cheese</span>.",
+	"A <span style='color: #27ae60;'>surprise visitor</span> brings good news.",
+	"Today is a perfect day to <span style='text-decoration: underline;'>try something new</span>.",
+	"Fortune favors the <span style='font-weight: bold;'>bold</span>.",
+	"You will find joy in <span style='color: #9b59b6;'>unexpected places</span>.",
+	"Your ideas will <span style='text-transform: uppercase;'>shine</span> today.",
+	"A small act of <span style='color: #e74c3c;'>kindness</span> will return to you multiplied.",
+	"Creativity flows like a <span style='font-style: italic;'>river</span> today.",
+	"A <span style='background: #f1c40f;'>golden opportunity</span> is coming.",
+	"Trust your <span style='font-variant: small-caps;'>instincts</span>.",
+	"A good laugh will come at just the right time."
+]
 
-function resetAllStyles() {
-	container.removeAttribute('class')
-	container.removeAttribute('style')
+let currentFortuneIndex = 0
+let output = document.querySelector('#output')
+
+function updateFortune(index) {
+	output.classList.remove('fade-in')
+	void output.offsetWidth
+	output.innerHTML = fortunes[index]
+	output.classList.add('fade-in')
 }
 
-let buttonReset = document.querySelector('#reset')
-buttonReset.addEventListener('click', resetAllStyles)
+function nextFortune() {
+	currentFortuneIndex++
+	if (currentFortuneIndex >= fortunes.length) {
+		currentFortuneIndex = 0
+	}
+	updateFortune(currentFortuneIndex)
+}
 
-let buttonClean = document.querySelector('#buttonClean')
-buttonClean.addEventListener('click', function() {
-	resetAllStyles()
-	container.classList.add('clean')
-})
+function prevFortune() {
+	currentFortuneIndex--
+	if (currentFortuneIndex < 0) {
+		currentFortuneIndex = fortunes.length - 1
+	}
+	updateFortune(currentFortuneIndex)
+}
 
-let buttonPoetic = document.querySelector('#buttonPoetic')
-buttonPoetic.addEventListener('click', function() {
-	resetAllStyles()
-	container.style.fontFamily = 'Georgia, serif'
-	container.style.letterSpacing = '-0.1em'
-	container.style.textAlign = 'center'
-	container.style.fontSize = '64px'
-	container.style.wordSpacing = '2em'
-	container.style.lineHeight = '3em'
-	container.style.background = '#f9f3ee'
-	container.style.padding = '50px'
-	container.style.borderRadius = '20px'
-})
+function randomFortune() {
+	let randomIndex = Math.floor(Math.random() * fortunes.length)
+	currentFortuneIndex = randomIndex
+	updateFortune(randomIndex)
+}
 
-let buttonPretty = document.querySelector('#buttonPretty')
-buttonPretty.addEventListener('click', function() {
-	resetAllStyles()
-	container.classList.add('pretty')
-})
-
-let buttonUgly = document.querySelector('#buttonUgly')
-buttonUgly.addEventListener('click', function() {
-	resetAllStyles()
-	container.classList.add('ugly')
-})
-
-let buttonScary = document.querySelector('#buttonScary')
-buttonScary.addEventListener('click', function() {
-	resetAllStyles()
-	container.style.fontFamily = "'Creepster', cursive"
-	container.style.color = 'red'
-	container.style.backgroundColor = '#000'
-	container.style.fontSize = '30px'
-	container.style.textTransform = 'uppercase'
-	container.style.letterSpacing = '0.4em'
-	container.style.textShadow = '0 0 12px white'
-	container.style.padding = '60px'
-	container.style.borderRadius = '12px'
-})
-
-let buttonFriendly = document.querySelector('#buttonFriendly')
-buttonFriendly.addEventListener('click', function() {
-	resetAllStyles()
-	container.style.fontFamily = "'Comic Sans MS', cursive"
-	container.style.color = '#1b5e20'
-	container.style.backgroundColor = '#e8f5e9'
-	container.style.fontSize = '22px'
-	container.style.padding = '30px'
-	container.style.borderRadius = '16px'
-	container.style.lineHeight = '2'
-	container.style.boxShadow = '0 0 20px rgba(0,0,0,0.1)'
-})
+document.querySelector("#buttonNext").addEventListener('click', nextFortune)
+document.querySelector("#buttonPrev").addEventListener('click', prevFortune)
+document.querySelector("#buttonRandom").addEventListener('click', randomFortune)
