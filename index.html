@@ -3,47 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Weekly challenge</title>
+	<title>Fortune Teller</title>
 	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-	<nav class="controls">
-		<h1 class="title">WEEKLY CHALLENGE</h1>
-
-		<h2>Finished examples</h2>
-		<div class="controls-buttons">
-			<button id="reset">Reset all styles</button>
-			<button id="buttonClean">Make the text *clean*<br>(using classes)</button>
-			<button id="buttonPoetic">Make the text *poetic*<br>(using inline CSS)</button>
+	<div class="container">
+		<h1>✨ Your Fortune ✨</h1>
+		<div id="output" class="fortune-text">
+			You will have a <span style="font-size: 40px; color: #5dade2;">GLORIOUS</span> day.
 		</div>
-
-		<h2>For you to finish, using <code>.classList</code>!</h2>
-		<div class="controls-buttons">
-			<button id="buttonPretty">Make the text *pretty*</button>
-			<button id="buttonUgly">Make the text *ugly*</button>
+		<div class="buttons">
+			<button id="buttonPrev">← Previous</button>
+			<button id="buttonRandom">🎲 Random</button>
+			<button id="buttonNext">Next →</button>
 		</div>
-
-		<h2>For you to finish, using <code>.style</code>!</h2>
-		<div class="controls-buttons">
-			<button id="buttonScary">Make the text *scary*</button>
-			<button id="buttonFriendly">Make the text *friendly*</button>
-		</div>
-	</nav>
-	
-	<main id="container">
-		<p>JavaScript is capable of dynamically changing a page’s content. We can use it to update HTML and CSS, even after a page has fully loaded.</p>
-		<p>What does this mean for us as designers? It means that we’ve unlocked a new superpower of code — <strong>the ability to change</strong>. Previously, code was a way for laying out responsive content that could work on any screen size. That’s definitely impactful! But with JavaScript, we can create pages that enable <strong>meaningful user interaction</strong>.</p>
-		<p>There’s a lot to learn, so we’re starting slow. This page features some text, which is what you’re reading right now. Your challenge is to keep adding to the user interface above that lets the user customize how this text looks. To do this, follow these steps:</p>
-		<ol>
-			<li>I’ve added 4 buttons with unique IDs that don’t do anything as of now.</li>
-			<li>Assign each of these buttons to new <strong>variables</strong> using JavaScript in the <code>&lt;script&gt;</code> element. Hint: you’ll need to use <code>document.querySelector()</code>!</li>
-			<li>Make each of those buttons interactive by using <code>.addEventListener()</code> and have them customize the CSS for the text you’re currently reading. As indicated, use <code>.classList</code> to add CSS classes or use <code>.style</code> to add inline CSS styles.</li>
-			<li>Note: for the <code>.classList</code> buttons, add styles to each class in CSS portion of this document that corresponds to the classes you just add via JavaScript.</li>
-		</ol>
-		<p>And like magic, the site is now dynamic without needing to reload the page at all!</p>
-	</main>
-
+	</div>
 	<script src="script.js"></script>
 </body>
 </html>
