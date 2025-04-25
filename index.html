@@ -3,22 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Fortune Teller</title>
+	<title>Interactive Generative Instrument</title>
 	<link rel="stylesheet" href="style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/tone@latest/build/Tone.js"></script>
 </head>
 <body>
-	<div class="container">
-		<h1>✨ Your Fortune ✨</h1>
-		<div id="output" class="fortune-text">
-			You will have a <span style="font-size: 40px; color: #5dade2;">GLORIOUS</span> day.
-		</div>
-		<div class="buttons">
-			<button id="buttonPrev">← Previous</button>
-			<button id="buttonRandom">🎲 Random</button>
-			<button id="buttonNext">Next →</button>
-		</div>
-	</div>
+	<h1>Interactive Generative Instrument</h1>
+	<div id="container"></div>
 	<script src="script.js"></script>
 </body>
 </html>
