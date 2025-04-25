@@ -1,14 +1,12 @@
 let synth = new Tone.Synth().toDestination();
+let container = document.querySelector("#container");
 
 function playRandomNote() {
-	Tone.start();
 	let notes = ["C", "D", "E", "F", "G", "A", "B"];
 	let octave = Math.floor(Math.random() * 4) + 3;
 	let note = notes[Math.floor(Math.random() * notes.length)];
 	synth.triggerAttackRelease(note + octave, "8n");
 }
-
-let container = document.querySelector("#container");
 
 function generateDivs() {
 	container.innerHTML = "";
@@ -26,11 +24,9 @@ function generateDivs() {
 
 		newElement.addEventListener('mouseenter', function() {
 			playRandomNote();
-
 			let hoverRed = Math.floor(Math.random() * 256);
 			let hoverGreen = Math.floor(Math.random() * 256);
 			let hoverBlue = Math.floor(Math.random() * 256);
-
 			newElement.style.backgroundColor = `rgb(${hoverRed}, ${hoverGreen}, ${hoverBlue})`;
 		});
 
@@ -38,5 +34,8 @@ function generateDivs() {
 	}
 }
 
-generateDivs();
-setInterval(generateDivs, 1000);
+document.addEventListener('click', async () => {
+	await Tone.start();
+	generateDivs();
+	setInterval(generateDivs, 1000);
+}, { once: true });
