@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Web Tile Piano</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/tone@latest/build/Tone.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jay's Wikipedia Randomizer</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-	<h1 id="note-display">WEB TILE PIANO</h1>
-	<div id="container"></div>
-	<script src="script.js"></script>
+  <div class="controls">
+    <div>
+      <h2>Number of articles</h2>
+      <input id="controlsNumberOfArticles" type="range" value="20" min="1" max="200">
+      <label id="controlsNumberOfArticlesLabel">20</label>
+    </div>
+    <div>
+      <h2>Font size</h2>
+      <input id="controlsFontSize" type="range" value="18" min="4" max="32">
+      <label id="controlsFontSizeLabel">18</label>
+    </div>
+    <div>
+      <h2>Background color</h2>
+      <input id="controlsBackgroundColor" type="color" value="#0000ff">
+      <label id="controlsBackgroundColorLabel">#0000ff</label>
+    </div>
+    <div>
+      <h2>Text color</h2>
+      <input id="controlsTextColor" type="color" value="#ffffff">
+      <label id="controlsTextColorLabel">#ffffff</label>
+    </div>
+    <button id="generateButton">Fetch Wikipedia articles.......</button>
+  </div>
+  <div class="container"></div>
+
+  <audio id="clickSound" src="https://cdn.jsdelivr.net/gh/jjy030404/sound-assets/button-click.mp3"></audio>
+  <script src="main.js"></script>
 </body>
 </html>
