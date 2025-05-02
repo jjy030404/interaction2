@@ -1,59 +1,66 @@
-let synth = new Tone.Synth().toDestination();
-let container = document.getElementById("container");
-let noteDisplay = document.getElementById("note-display");
-let notesPlayed = [];
+let settings = {
+  numberOfArticles: 20,
+  fontSize: 18,
+  backgroundColor: "#0000ff",
+  textColor: "#ffffff",
+};
 
-function playNote(note) {
-	synth.triggerAttackRelease(note, "8n");
-	notesPlayed.push(note);
-	if (notesPlayed.length > 10) notesPlayed.shift();
-	noteDisplay.textContent = notesPlayed.join('');
+let controlsNumberOfArticles = document.querySelector("#controlsNumberOfArticles");
+let controlsNumberOfArticlesLabel = document.querySelector("#controlsNumberOfArticlesLabel");
+let controlsFontSize = document.querySelector("#controlsFontSize");
+let controlsFontSizeLabel = document.querySelector("#controlsFontSizeLabel");
+let controlsBackgroundColor = document.querySelector("#controlsBackgroundColor");
+let controlsBackgroundColorLabel = document.querySelector("#controlsBackgroundColorLabel");
+let controlsTextColor = document.querySelector("#controlsTextColor");
+let controlsTextColorLabel = document.querySelector("#controlsTextColorLabel");
+
+controlsNumberOfArticles.addEventListener("input", function () {
+  settings.numberOfArticles = this.value;
+  controlsNumberOfArticlesLabel.textContent = this.value;
+});
+
+controlsFontSize.addEventListener("input", function () {
+  settings.fontSize = this.value;
+  controlsFontSizeLabel.textContent = this.value;
+});
+
+controlsBackgroundColor.addEventListener("input", function () {
+  settings.backgroundColor = this.value;
+  controlsBackgroundColorLabel.textContent = this.value;
+});
+
+controlsTextColor.addEventListener("input", function () {
+  settings.textColor = this.value;
+  controlsTextColorLabel.textContent = this.value;
+});
+
+function getRandomArticles() {
+  let container = document.querySelector(".container");
+  container.innerHTML = "";
+
+  let url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=random&rnnamespace=0&rnlimit=${settings.numberOfArticles}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((res) => {
+      let articles = res.query.random;
+      articles.forEach((entry, i) => {
+        let link = document.createElement("a");
+        link.href = `https://en.wikipedia.org/wiki/${entry.title}`;
+        link.target = "_blank";
+        link.textContent = entry.title;
+        link.style.fontSize = `${settings.fontSize}px`;
+        link.style.backgroundColor = settings.backgroundColor;
+        link.style.color = settings.textColor;
+        link.style.animationDelay = `${i * 0.05}s`;
+        container.appendChild(link);
+      });
+    });
 }
 
-function randomNote() {
-	let notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-	let octave = Math.floor(Math.random() * 4) + 3;
-	return notes[Math.floor(Math.random() * notes.length)] + octave;
-}
-
-function generateTiles() {
-	container.innerHTML = "";
-	let count = Math.floor(Math.random() * 51) + 30;
-
-	for (let i = 0; i < count; i++) {
-		let hex = document.createElement("div");
-		hex.classList.add("hex");
-
-		let size = Math.floor(Math.random() * 80) + 50;
-		hex.style.setProperty("--size", `${size}px`);
-
-		let red = Math.floor(Math.random() * 256);
-		let green = Math.floor(Math.random() * 256);
-		let blue = Math.floor(Math.random() * 256);
-		hex.style.setProperty("--bg", `rgb(${red},${green},${blue})`);
-
-		let note = randomNote();
-
-		hex.addEventListener('mouseenter', () => {
-			let hoverNote = randomNote();
-			playNote(hoverNote);
-			let hoverRed = Math.floor(Math.random() * 256);
-			let hoverGreen = Math.floor(Math.random() * 256);
-			let hoverBlue = Math.floor(Math.random() * 256);
-			hex.style.setProperty("--bg", `rgb(${hoverRed},${hoverGreen},${hoverBlue})`);
-		});
-
-		hex.addEventListener('click', () => {
-			let loop = new Tone.Loop(() => playNote(note), "4n").start(0);
-			Tone.Transport.start();
-		});
-
-		container.appendChild(hex);
-	}
-}
-
-document.addEventListener('click', async () => {
-	await Tone.start();
-	generateTiles();
-	setInterval(generateTiles, 10000);
-}, { once: true });
+document.querySelector("#generateButton").addEventListener("click", () => {
+  const sound = document.querySelector("#clickSound");
+  sound.currentTime = 0;
+  sound.play();
+  getRandomArticles();
+});
