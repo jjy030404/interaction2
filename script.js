@@ -2,47 +2,43 @@ let settings = {
   numberOfArticles: 20,
   fontSize: 18,
   backgroundColor: "#0000ff",
-  textColor: "#ffffff",
+  textColor: "#f2f2f2",
 };
 
-let controlsNumberOfArticles = document.querySelector("#controlsNumberOfArticles");
-let controlsNumberOfArticlesLabel = document.querySelector("#controlsNumberOfArticlesLabel");
-let controlsFontSize = document.querySelector("#controlsFontSize");
-let controlsFontSizeLabel = document.querySelector("#controlsFontSizeLabel");
-let controlsBackgroundColor = document.querySelector("#controlsBackgroundColor");
-let controlsBackgroundColorLabel = document.querySelector("#controlsBackgroundColorLabel");
-let controlsTextColor = document.querySelector("#controlsTextColor");
-let controlsTextColorLabel = document.querySelector("#controlsTextColorLabel");
+let sound = document.querySelector("#hoverSound");
 
-controlsNumberOfArticles.addEventListener("input", function () {
+document.querySelector("#controlsNumberOfArticles").addEventListener("input", function () {
   settings.numberOfArticles = this.value;
-  controlsNumberOfArticlesLabel.textContent = this.value;
+  document.querySelector("#controlsNumberOfArticlesLabel").textContent = this.value;
 });
 
-controlsFontSize.addEventListener("input", function () {
+document.querySelector("#controlsFontSize").addEventListener("input", function () {
   settings.fontSize = this.value;
-  controlsFontSizeLabel.textContent = this.value;
+  document.querySelector("#controlsFontSizeLabel").textContent = this.value;
 });
 
-controlsBackgroundColor.addEventListener("input", function () {
+document.querySelector("#controlsBackgroundColor").addEventListener("input", function () {
   settings.backgroundColor = this.value;
-  controlsBackgroundColorLabel.textContent = this.value;
+  document.querySelector("#controlsBackgroundColorLabel").textContent = this.value;
 });
 
-controlsTextColor.addEventListener("input", function () {
+document.querySelector("#controlsTextColor").addEventListener("input", function () {
   settings.textColor = this.value;
-  controlsTextColorLabel.textContent = this.value;
+  document.querySelector("#controlsTextColorLabel").textContent = this.value;
 });
 
 function getRandomArticles() {
-  let container = document.querySelector(".container");
+  const container = document.querySelector(".container");
+  const preview = document.querySelector("#previewPanel");
+  preview.classList.remove("active");
+  document.querySelector("#previewContent").textContent = "Click an article to see a preview.";
   container.innerHTML = "";
 
   let url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=random&rnnamespace=0&rnlimit=${settings.numberOfArticles}`;
 
   fetch(url)
-    .then((res) => res.json())
-    .then((res) => {
+    .then(res => res.json())
+    .then(res => {
       let articles = res.query.random;
       articles.forEach((entry, i) => {
         let link = document.createElement("a");
@@ -53,14 +49,33 @@ function getRandomArticles() {
         link.style.backgroundColor = settings.backgroundColor;
         link.style.color = settings.textColor;
         link.style.animationDelay = `${i * 0.05}s`;
+
+        link.addEventListener("mouseenter", () => {
+          sound.currentTime = 0;
+          sound.play();
+        });
+
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          fetchPreview(entry.title);
+        });
+
         container.appendChild(link);
       });
     });
 }
 
-document.querySelector("#generateButton").addEventListener("click", () => {
-  const sound = document.querySelector("#clickSound");
-  sound.currentTime = 0;
-  sound.play();
-  getRandomArticles();
-});
+function fetchPreview(title) {
+  let preview = document.querySelector("#previewPanel");
+  fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`)
+    .then(res => res.json())
+    .then(data => {
+      preview.classList.add("active");
+      document.querySelector("#previewContent").innerHTML = `
+        <strong>${data.title}</strong><br>
+        ${data.extract || "No preview available."}
+      `;
+    });
+}
+
+document.querySelector("#generateButton").addEventListener("click", getRandomArticles);
