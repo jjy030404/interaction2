@@ -5,7 +5,9 @@ let settings = {
   textColor: "#f2f2f2",
 };
 
-let sound = document.querySelector("#hoverSound");
+const synth = new Tone.Synth().toDestination();
+const previewPanel = document.querySelector("#previewPanel");
+const previewContent = document.querySelector("#previewContent");
 
 document.querySelector("#controlsNumberOfArticles").addEventListener("input", function () {
   settings.numberOfArticles = this.value;
@@ -29,19 +31,18 @@ document.querySelector("#controlsTextColor").addEventListener("input", function 
 
 function getRandomArticles() {
   const container = document.querySelector(".container");
-  const preview = document.querySelector("#previewPanel");
-  preview.classList.remove("active");
-  document.querySelector("#previewContent").textContent = "Click an article to see a preview.";
+  previewPanel.classList.remove("active");
+  previewContent.textContent = "Hover over an article to preview it.";
   container.innerHTML = "";
 
-  let url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=random&rnnamespace=0&rnlimit=${settings.numberOfArticles}`;
+  const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=random&rnnamespace=0&rnlimit=${settings.numberOfArticles}`;
 
   fetch(url)
     .then(res => res.json())
     .then(res => {
-      let articles = res.query.random;
+      const articles = res.query.random;
       articles.forEach((entry, i) => {
-        let link = document.createElement("a");
+        const link = document.createElement("a");
         link.href = `https://en.wikipedia.org/wiki/${entry.title}`;
         link.target = "_blank";
         link.textContent = entry.title;
@@ -51,12 +52,8 @@ function getRandomArticles() {
         link.style.animationDelay = `${i * 0.05}s`;
 
         link.addEventListener("mouseenter", () => {
-          sound.currentTime = 0;
-          sound.play();
-        });
-
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
+          playRandomTone();
+          changeRandomBackground();
           fetchPreview(entry.title);
         });
 
@@ -65,17 +62,30 @@ function getRandomArticles() {
     });
 }
 
+function playRandomTone() {
+  const notes = ["C4", "D4", "E4", "F4", "G4", "A4", "B4"];
+  const randomNote = notes[Math.floor(Math.random() * notes.length)];
+  synth.triggerAttackRelease(randomNote, "8n");
+}
+
+function changeRandomBackground() {
+  const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 80%, 85%)`;
+  document.body.style.backgroundColor = randomColor;
+}
+
 function fetchPreview(title) {
-  let preview = document.querySelector("#previewPanel");
   fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`)
     .then(res => res.json())
     .then(data => {
-      preview.classList.add("active");
-      document.querySelector("#previewContent").innerHTML = `
+      previewPanel.classList.add("active");
+      previewContent.innerHTML = `
         <strong>${data.title}</strong><br>
         ${data.extract || "No preview available."}
       `;
     });
 }
 
-document.querySelector("#generateButton").addEventListener("click", getRandomArticles);
+document.querySelector("#generateButton").addEventListener("click", async () => {
+  await Tone.start();
+  getRandomArticles();
+});
