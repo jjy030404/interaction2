@@ -1,34 +1,21 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #d3cce3, #e9e4f0);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  margin: 0;
   padding: 40px 20px;
 }
 
 .controls {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
-  width: 90%;
-  max-width: 800px;
+  gap: 20px;
   margin-bottom: 30px;
-  animation: fadeIn 1s ease-out;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border-radius: 16px;
 }
 
 .controls > div {
@@ -39,82 +26,84 @@ body {
 
 .controls h2 {
   font-size: 16px;
-  color: #333;
   margin-bottom: 5px;
-}
-
-.controls input[type="range"],
-.controls input[type="color"] {
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 5px;
-}
-
-.controls label {
-  margin-top: 5px;
-  font-size: 14px;
-  color: #444;
 }
 
 .controls button {
   padding: 12px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: #222;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.2);
   backdrop-filter: blur(10px);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 .controls button:hover {
-  background: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
+  background-color: #ffffff40;
+  transform: scale(1.05);
+}
+
+.main {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  width: 90%;
-  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  flex: 1;
 }
 
 .container a {
-  padding: 14px 24px;
-  border-radius: 20px;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
   text-decoration: none;
+  transition: all 0.3s ease;
   font-weight: 600;
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeUp 0.6s forwards;
-  transition: all 0.4s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  animation: fadeUp 0.4s forwards;
 }
 
 .container a:hover {
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transform: scale(1.05);
-  opacity: 0.8;
-  filter: brightness(110%);
+  border-radius: 50px;
+}
+
+#previewPanel {
+  width: 300px;
+  min-height: 200px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.5s ease;
+  transform: translateX(30px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+#previewPanel.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+#previewPanel h3 {
+  margin-bottom: 10px;
 }
 
 @keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
   to {
     opacity: 1;
     transform: translateY(0);
