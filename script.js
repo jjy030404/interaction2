@@ -6,7 +6,7 @@ let settings = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const synth = new Tone.Synth().toDestination();
+  let synth = null;
   const previewPanel = document.querySelector("#previewPanel");
   const previewContent = document.querySelector("#previewContent");
 
@@ -53,7 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
           link.style.animationDelay = `${i * 0.05}s`;
 
           link.addEventListener("mouseenter", () => {
-            playRandomTone();
+            if (synth) {
+              playRandomTone(synth);
+            }
             changeRandomBackground();
             fetchPreview(entry.title);
           });
@@ -63,10 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  function playRandomTone() {
+  function playRandomTone(synthInstance) {
     const notes = ["C4", "D4", "E4", "F4", "G4", "A4", "B4"];
     const randomNote = notes[Math.floor(Math.random() * notes.length)];
-    synth.triggerAttackRelease(randomNote, "8n");
+    synthInstance.triggerAttackRelease(randomNote, "8n");
   }
 
   function changeRandomBackground() {
@@ -87,7 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.querySelector("#generateButton").addEventListener("click", async () => {
-    await Tone.start(); // 🔐 사용자 상호작용 내에서 실행
+    await Tone.start();
+    synth = new Tone.Synth().toDestination(); // ✅ 제스처 후에 생성
     getRandomArticles();
   });
 });
